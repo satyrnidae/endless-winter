@@ -1,0 +1,672 @@
+{
+"id": "saturniidae_hatchlingHarbinger_encounter_heroesArriveAtSite_anUnexpectedFind",
+"info": {
+	"dataVersion": 1,
+	"sourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+	"modId": "saturniidae_hatchlingHarbinger",
+	"author": "Isabel Maskrey",
+	"STUB": "The event which kicks off the process of acquiring a dragon companion."
+},
+"type": "ENCOUNTER_HEROES_ARRIVE_HOSTILE_SITE",
+"verb": "MANEUVER",
+"ability": {
+	"icon": "ambush",
+	"category": "attack",
+	"priority": "1",
+	"showInCharacterSheet": false,
+	"cooldown": "oncePerGame",
+	"musicOverride": "Music/Comics - High Magic Encounters"
+},
+"targets": [
+	{ "template": "EVENT" },
+	{ "template": "COMPANY" },
+	{ "template": "INJECTED_TILE" },
+	{ "template": "INJECTED_SITE" },
+	{ "template": "INJECTED_PARTY" },
+	{ "template": "INJECTED_THREAT" },
+	{
+		"role": "healer",
+		"template": "HERO_BY_SCORE",
+		"STUB": "The healer who wants to save the egg.",
+		"scoreFunction": "2*((3*HEALER)+GOOFBALL)",
+		"fromRoles": [ "party" ],
+		"aspectValues": [
+			{ "id": "themeSlotFilled_pet", "forbidden": true }
+		]
+	},
+	{
+		"role": "rival",
+		"template": "PICK_BY_SCORE",
+		"STUB": "The pragmatic rival who wants to destroy it.",
+		"scoreFunction": "(2000*RIVAL_WITH.healer)+(2*((3*SNARK)+LEADER))",
+		"notAlreadyMatchedAs": [ "healer" ]
+	},
+	{
+		"role": "hero3",
+		"template": "PICK_BY_SCORE",
+		"choose": "BY_SCORE_OPTIONAL",
+		"scoreFunction": null,
+		"notAlreadyMatchedAs": [ "healer", "rival" ]
+	},
+	{
+		"template": "CHOICE",
+		"promptScript": [
+			{
+				"class": "comicNode_Panel",
+				"panel": {
+					"size": "full",
+					"bg": "comicBG_forestFoothill_green.jpg",
+					"actorSlots": [
+						{
+							"role": "rival",
+							"facing": "left",
+							"equipment": {},
+							"anchor": { "x": 0.818, "y": 0.408 },
+							"size": 0.3539,
+							"drawDepth": 3,
+							"nameTag": "bottomRight"
+						},
+						{
+							"role": "healer",
+							"equipment": { "mode": "leaveEquipment" },
+							"anchor": { "x": 0.42, "y": 0.556 },
+							"size": 0.5549,
+							"head": { "scaleY": -1 }
+						},
+						{
+							"assetSpec": "comic:rocksWaterfallSmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": 0.12, "y": 0.138 },
+							"size": 0.4088,
+							"drawDepth": 1,
+							"nameTag": "none"
+						},
+						{
+							"assetSpec": "comic:rocksWaterfallSmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": -0.059, "y": 0.575 },
+							"size": 0.7665,
+							"nameTag": "none"
+						},
+						{
+							"assetSpec": "scenery:rockFoothill2.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": 0.681, "y": 0.239 },
+							"size": 0.4283,
+							"nameTag": "none"
+						},
+						{
+							"assetSpec": "comic:comicForeground_rockJaggySmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": 0.92, "y": 0.041 },
+							"size": 0.3408,
+							"drawDepth": 0,
+							"nameTag": "none"
+						}
+					],
+					"textSlots": [
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_001~1_narration",
+							"style": "narration"
+						},
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_001~2_rival",
+							"pointerOwner": "rival",
+							"location": "topRight",
+							"padXFraction": 0.258,
+							"padYFraction": 0.135,
+							"widthFraction": 0.74788445,
+							"shrinkToFitText": true,
+							"pointerStyle": "none",
+							"pointerAdjust": { "dX": -101.793106, "dY": -67.862076 }
+						},
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_001~3_rival",
+							"pointerOwner": "rival",
+							"location": "topRight",
+							"padXFraction": 0.211,
+							"padYFraction": 0.272,
+							"widthFraction": 0.2847972
+						},
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_001~4_healer",
+							"style": "thought",
+							"pointerOwner": "healer",
+							"location": "bottomLeft",
+							"padXFraction": 0.49,
+							"padYFraction": 0.242,
+							"widthFraction": 0.22060111,
+							"shrinkToFitText": true
+						}
+					]
+				}
+			},
+			{
+				"class": "comicNode_Panel",
+				"panel": {
+					"size": "twoThirds",
+					"showNameTags": false,
+					"actorSlots": [
+						{
+							"role": "healer",
+							"equipment": { "mode": "leaveEquipment" },
+							"anchor": { "x": 0.24442255, "y": 0.519 },
+							"size": 0.7525
+						},
+						{
+							"role": "rival",
+							"facing": "left",
+							"equipment": {},
+							"anchor": { "x": 0.863, "y": 0.451 },
+							"size": 0.3725,
+							"nameTag": "bottomRight"
+						},
+						{
+							"assetSpec": "comic:comicForeground_rockJaggySmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": 0.96300006, "y": 0.057 },
+							"size": 0.253,
+							"drawDepth": 0,
+							"nameTag": "none"
+						},
+						{
+							"assetSpec": "comic:rocksWaterfallSmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": -0.53699994, "y": 0.688 },
+							"size": 0.7665,
+							"nameTag": "none"
+						},
+						{
+							"assetSpec": "scenery:rockFoothill2.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": 0.65, "y": 0.23 },
+							"size": 0.4283,
+							"nameTag": "none"
+						},
+						{
+							"assetSpec": "comic:rocksWaterfallSmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": -0.27300006 },
+							"size": 0.4088,
+							"drawDepth": 1,
+							"nameTag": "none"
+						}
+					],
+					"textSlots": [
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_002~1_healer",
+							"pointerOwner": "healer",
+							"location": "topRight",
+							"padXFraction": 0.302,
+							"padYFraction": 0.025,
+							"widthFraction": 0.55422753,
+							"shrinkToFitText": true,
+							"pointerAdjust": { "dX": 11.310346, "dY": -0.9425288 }
+						},
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_002~2_rival",
+							"pointerOwner": "rival",
+							"location": "topRight",
+							"padXFraction": 0.233,
+							"padYFraction": 0.319,
+							"widthFraction": 0.40371847,
+							"shrinkToFitText": true,
+							"pointerAdjust": { "dX": -19.793104, "dY": -6.5977015 }
+						},
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_002~3_healer",
+							"pointerOwner": "healer",
+							"location": "bottomLeft",
+							"padXFraction": 0.416,
+							"padYFraction": 0.265,
+							"widthFraction": 0.33997348,
+							"shrinkToFitText": true,
+							"pointerAdjust": { "rotate": 19.653822, "dX": 7.5402308, "dY": 10.367817 }
+						}
+					]
+				}
+			},
+			{
+				"class": "comicNode_Panel",
+				"panel": {
+					"showNameTags": false,
+					"actorSlots": [
+						{
+							"role": "healer",
+							"equipment": { "mode": "leaveEquipment" },
+							"anchor": { "x": 0.535, "y": 0.484 },
+							"size": 1.115942,
+							"nameTag": "bottomRight",
+							"head": { "scaleY": -1 }
+						},
+						{
+							"assetSpec": "comic:rocksWaterfallSmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": -1.279, "y": 0.722 },
+							"size": 1.0068,
+							"nameTag": "none"
+						}
+					],
+					"textSlots": [
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_003~1_healer",
+							"pointerOwner": "healer",
+							"location": "topRight",
+							"shrinkToFitText": true
+						}
+					]
+				}
+			},
+			{
+				"class": "comicNode_Panel",
+				"panel": {
+					"size": "half",
+					"showNameTags": false,
+					"actorSlots": [
+						{
+							"role": "healer",
+							"facing": "left",
+							"equipment": {},
+							"anchor": { "x": 0.31620824, "y": 0.5 },
+							"size": 0.5743492,
+							"head": { "scaleY": 1 }
+						},
+						{
+							"role": "rival",
+							"facing": "left",
+							"equipment": {},
+							"anchor": { "x": 0.744, "y": 0.515 },
+							"size": 0.4968,
+							"drawDepth": 3.5,
+							"nameTag": "bottomRight"
+						},
+						{
+							"assetSpec": "comic:rocksWaterfallSmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": 0.111, "y": 0.069 },
+							"size": 0.4088,
+							"drawDepth": 3,
+							"nameTag": "none"
+						},
+						{
+							"assetSpec": "comic:rocksWaterfallSmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": -0.245, "y": 0.704 },
+							"size": 0.7665,
+							"nameTag": "none"
+						}
+					],
+					"textSlots": [
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_004~1_healer",
+							"pointerOwner": "healer",
+							"padXFraction": 0.058,
+							"padYFraction": 0.17,
+							"widthFraction": 0.42925373,
+							"shrinkToFitText": true
+						},
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_004~2_rival",
+							"pointerOwner": "rival",
+							"location": "topRight",
+							"padXFraction": 0.372,
+							"padYFraction": 0.061,
+							"widthFraction": 0.47761208,
+							"shrinkToFitText": true,
+							"pointerAdjust": { "scaleX": 1.1288418, "scaleY": 1.1288418 }
+						}
+					]
+				}
+			},
+			{
+				"class": "comicNode_Panel",
+				"panel": {
+					"size": "half",
+					"showNameTags": false,
+					"actorSlots": [
+						{
+							"role": "rival",
+							"facing": "left",
+							"equipment": {},
+							"nameTag": "bottomRight"
+						},
+						{
+							"assetSpec": "comic:rocksWaterfallSmall.png",
+							"role": null,
+							"focus": "foot",
+							"anchor": { "x": 0.463, "y": 0.64 },
+							"size": 1.0517,
+							"nameTag": "none"
+						}
+					],
+					"textSlots": [
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_005~1_rival",
+							"pointerOwner": "rival",
+							"widthFraction": 0.9958209,
+							"shrinkToFitText": true
+						}
+					]
+				}
+			},
+			{
+				"class": "comicNode_Panel",
+				"panel": {
+					"size": "fourth",
+					"showNameTags": false,
+					"actorSlots": [
+						{
+							"role": "healer",
+							"facing": "left",
+							"equipment": {},
+							"anchor": { "x": 0.616, "y": 0.537 },
+							"nameTag": "bottomRight"
+						}
+					],
+					"textSlots": [
+						{
+							"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+							"textKey": "~01~prompt~panel_006~1_healer",
+							"pointerOwner": "healer"
+						}
+					]
+				}
+			}
+		],
+		"options": [
+			{
+				"id": "cautious",
+				"script": [
+					{
+						"class": "comicNode_Panel",
+						"panel": {
+							"actorSlots": [
+								{
+									"role": "healer",
+									"equipment": { "mode": "leaveEquipment" },
+									"anchor": { "x": 0.493, "y": 0.447 },
+									"head": { "scaleY": -1 }
+								},
+								{
+									"assetSpec": "comic:icon_dice.png",
+									"role": null,
+									"focus": "foot",
+									"anchor": { "x": 0.8, "y": 0.061 },
+									"size": 0.5028,
+									"drawDepth": 0,
+									"nameTag": "none"
+								}
+							],
+							"textSlots": [
+								{
+									"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+									"textKey": "~02~choice_cautious~panel_001~1_healer",
+									"pointerOwner": "healer",
+									"location": "topRight",
+									"shrinkToFitText": true
+								},
+								{
+									"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+									"textKey": "~02~choice_cautious~panel_001~2_darken",
+									"style": "darken",
+									"location": "bottomRight",
+									"shrinkToFitText": true
+								}
+							]
+						}
+					}
+				]
+			},
+			{
+				"id": "brash",
+				"script": [
+					{
+						"class": "comicNode_Panel",
+						"panel": {
+							"actorSlots": [
+								{ "role": "healer" },
+								{
+									"assetSpec": "comic:icon_dice.png",
+									"role": null,
+									"focus": "foot",
+									"anchor": { "x": 0.807, "y": 0.065 },
+									"size": 0.5028,
+									"drawDepth": 0,
+									"nameTag": "none"
+								}
+							],
+							"textSlots": [
+								{
+									"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+									"textKey": "~03~choice_brash~panel_001~1_healer",
+									"pointerOwner": "healer"
+								},
+								{
+									"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+									"textKey": "~03~choice_brash~panel_001~2_darken",
+									"style": "darken",
+									"location": "bottomRight",
+									"shrinkToFitText": true
+								}
+							]
+						}
+					}
+				]
+			},
+			{
+				"id": "wise",
+				"script": [
+					{
+						"class": "comicNode_Panel",
+						"panel": {
+							"actorSlots": [
+								{ "role": "rival", "facing": "left", "nameTag": "bottomRight" }
+							],
+							"textSlots": [
+								{
+									"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+									"textKey": "~04~choice_wise~panel_001~1_rival",
+									"pointerOwner": "rival"
+								}
+							]
+						}
+					}
+				],
+				"ifTargetIsPresent": "hero3"
+			}
+		]
+	}
+],
+"outcomes": [
+	{
+		"class": "IfPlayerChose",
+		"target": "healer",
+		"ifPlayerChose": "cautious",
+		"then": {
+			"class": "Test",
+			"value": "EVENT_ROLL+roll_cautious",
+			"threshold": "difficulty_cautious",
+			"onPass": {
+				"class": "DoAll",
+				"outcomes": [
+					{
+						"class": "Description",
+						"script": [
+							{
+								"class": "comicNode_Panel",
+								"panel": {
+									"actorSlots": [
+										{ "role": "healer", "form": "frame-happy" }
+									],
+									"textSlots": [
+										{
+											"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+											"textKey": "~05~player_chose_cautious.test_pass~panel_001~1_healer",
+											"pointerOwner": "healer"
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"onFail": {
+				"class": "DoAll",
+				"outcomes": [
+					{
+						"class": "Description",
+						"script": [
+							{
+								"class": "comicNode_Panel",
+								"panel": {
+									"actorSlots": [
+										{ "role": "healer", "form": "frame-grim" }
+									],
+									"textSlots": [
+										{
+											"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+											"textKey": "~06~player_chose_cautious.test_fail~panel_001~1_healer",
+											"pointerOwner": "healer"
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	},
+	{
+		"class": "IfPlayerChose",
+		"target": "healer",
+		"ifPlayerChose": "brash",
+		"then": {
+			"class": "Test",
+			"value": "EVENT_ROLL+roll_brash",
+			"threshold": "difficulty_brash",
+			"onPass": {
+				"class": "DoAll",
+				"outcomes": [
+					{
+						"class": "Description",
+						"script": [
+							{
+								"class": "comicNode_Panel",
+								"panel": {
+									"actorSlots": [
+										{ "role": "healer", "form": "frame-happy" }
+									],
+									"textSlots": [
+										{
+											"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+											"textKey": "~07~player_chose_brash.test_pass~panel_001~1_healer",
+											"pointerOwner": "healer"
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"onFail": {
+				"class": "DoAll",
+				"outcomes": [
+					{
+						"class": "Description",
+						"script": [
+							{
+								"class": "comicNode_Panel",
+								"panel": {
+									"actorSlots": [
+										{ "role": "healer", "form": "frame-grim" }
+									],
+									"textSlots": [
+										{
+											"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+											"textKey": "~08~player_chose_brash.test_fail~panel_001~1_healer",
+											"pointerOwner": "healer"
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	},
+	{
+		"class": "IfPlayerChose",
+		"target": "rival",
+		"ifPlayerChose": "wise",
+		"then": {
+			"class": "DoAll",
+			"outcomes": [
+				{
+					"class": "Description",
+					"script": [
+						{
+							"class": "comicNode_Panel",
+							"panel": {
+								"actorSlots": [
+									{ "role": "rival" }
+								],
+								"textSlots": [
+									{
+										"textSourceFile": "arriveAtSite/encounter_heroesArriveAtSite_anUnexpectedFind",
+										"textKey": "~09~player_chose_wise~panel_001~1_rival",
+										"pointerOwner": "rival"
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	}
+],
+"expressions": {
+	"roll_brash": "(0.5*(CHARISMA+MELEE_ACCURACY))+1d30",
+	"roll_cautious": "1d30+((0.5*(CHARISMA+TENACITY))+(0.75*DODGE))",
+	"difficulty_cautious": "120",
+	"difficulty_brash": "120"
+},
+"implications": {
+	"generatedTargets": [
+		{
+			"role": "monster",
+			"npcId": "anUnexpectedFind_drauvenSkysinger",
+			"createEntity": {
+				"query": { "baseTag": "drauven_skysinger" },
+				"control": "none"
+			}
+		}
+	]
+}
+}

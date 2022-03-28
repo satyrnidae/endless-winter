@@ -1,0 +1,8 @@
+[
+{
+	"modId": "saturniidae_hatchlingHarbinger",
+	"id": "saturniidae_hatchlingHarbinger_elementalWeaponIce",
+	"effects": [ "stuntEffect_ice" ],
+	"importance": -1
+}
+]

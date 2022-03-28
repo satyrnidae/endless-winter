@@ -1,0 +1,79 @@
+{
+"budget": "64",
+"emitterLifetime": "5",
+"loopLimit": "1",
+"loopBehavior": "reset",
+"rules": [
+	{
+		"class": "Once",
+		"when": "0",
+		"doAll": [
+			{
+				"class": "Emit",
+				"numberOfParticles": "64",
+				"image": [ "particle_sparkleSmall", "particle_sparkleXP1" ],
+				"light": "gain",
+				"size": "[0.1,0.4]",
+				"killTime": "[1.5,5]",
+				"initializeWith": [
+					{
+						"class": "SetVelocity",
+						"vx": "[-0.25,0.25]",
+						"vy": "[-0.25,0.25]",
+						"vz": "[0.5,1]",
+						"vTheta": "[-25,25]"
+					},
+					{
+						"class": "SetPosition",
+						"x": "[-1,1]",
+						"y": "[-1,1]",
+						"z": "[-2,-0.15]",
+						"theta": "[-45,45]"
+					},
+					{
+						"class": "SetColor",
+						"color": { "r": "1", "g": "1", "b": "[1,1.5]", "a": "[0.7,1]" }
+					}
+				]
+			}
+		]
+	},
+	{ "class": "Lifetime" },
+	{ "class": "BasicPhysics" },
+	{
+		"class": "SetColor",
+		"color": {
+			"r": "life~{2|1|1|0.5}",
+			"g": "life~{2|1|1|0.66000003}",
+			"b": "life~{2.5|1|1|1}",
+			"a": "life~{0|0.33000001|1|0.5|0}"
+		}
+	},
+	{
+		"class": "Accelerate",
+		"ax": "e.windX*[-0.1,0.1]",
+		"ay": "[-1,1]",
+		"az": "0",
+		"aTheta": "0.05"
+	},
+	{ "class": "Drag", "vSquaredComponent": "0.75" },
+	{
+		"class": "Bounce",
+		"heightDecayOnBounce": "1",
+		"speedDecayOnBounce": "1",
+		"stopBelowVelocity": "10"
+	},
+	{ "class": "EmitterVar", "name": "windX", "value": "0", "onlyIfNull": true },
+	{
+		"class": "Rate",
+		"rate": "2",
+		"doAll": [
+			{
+				"class": "EmitterVar",
+				"name": "windX",
+				"value": "lerp(e.windX,0,0.15)+[5|-5,5]"
+			}
+		]
+	}
+]
+}

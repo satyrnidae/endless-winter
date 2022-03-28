@@ -1,0 +1,150 @@
+{
+"id": "saturniidae_hatchlingHarbinger_hook_Dreamer_wintersWhispers_intro",
+"info": {
+	"dataVersion": 1,
+	"sourceFile": "hook/hook_Dreamer_wintersWhispers_intro",
+	"modId": "saturniidae_hatchlingHarbinger",
+	"author": "Isabel Maskrey"
+},
+"type": "ENCOUNTER_HOOK_INTRO",
+"verb": "MANEUVER",
+"ability": { "icon": "melee", "priority": "1", "cooldown": "oncePerGame" },
+"targets": [
+	{ "template": "EVENT", "threatFlavorExists": "drauven" },
+	{ "template": "COMPANY" },
+	{ "template": "INJECTED_SITE" },
+	{
+		"role": "hook",
+		"template": "INJECTED_HERO",
+		"injectedRole": "hook",
+		"aspectValues": [
+			{ "id": "hook_DreamerResolved", "forbidden": true }
+		],
+		"test": "LESS_THAN_OR_EQUAL_TO",
+		"a": "AGE",
+		"b": "RETIREMENT_AGE"
+	},
+	{
+		"template": "ASPECT",
+		"aspects": [ "hook_Dreamer" ]
+	},
+	{
+		"role": "hook2",
+		"template": "INJECTED_HERO",
+		"injectedRole": "hook2",
+		"aspectValues": [
+			{ "id": "familyWith", "forbidden": true, "relativeTo": "hook" }
+		]
+	},
+	{
+		"template": "CHOICE",
+		"promptScript": [
+			{
+				"class": "comicNode_Panel",
+				"panel": {
+					"size": "full",
+					"actorSlots": [
+						{
+							"role": "hook",
+							"equipment": {},
+							"anchor": { "x": 0.36, "y": 0.5 },
+							"nameTag": "none"
+						},
+						{
+							"role": "hook2",
+							"equipment": {},
+							"anchor": { "x": 0.64, "y": 0.5 },
+							"size": 0.9524,
+							"nameTag": "none"
+						}
+					],
+					"textSlots": [
+						{
+							"textSourceFile": "hook/hook_Dreamer_wintersWhispers_intro",
+							"textKey": "~01~prompt~panel_001~1_narration",
+							"style": "narration"
+						}
+					]
+				}
+			}
+		],
+		"options": [
+			{
+				"id": "yes",
+				"script": [
+					{
+						"class": "comicNode_Panel",
+						"panel": {
+							"size": "half",
+							"textSlots": [
+								{
+									"textSourceFile": "hook/hook_Dreamer_wintersWhispers_intro",
+									"textKey": "~02~choice_yes~panel_001~1_narration",
+									"style": "narration"
+								}
+							]
+						}
+					}
+				]
+			},
+			{
+				"id": "no",
+				"script": [
+					{
+						"class": "comicNode_Panel",
+						"panel": {
+							"size": "half",
+							"textSlots": [
+								{
+									"textSourceFile": "hook/hook_Dreamer_wintersWhispers_intro",
+									"textKey": "~03~choice_no~panel_001~1_narration",
+									"style": "narration"
+								}
+							]
+						}
+					}
+				]
+			}
+		]
+	},
+	{
+		"role": "party",
+		"template": "JOB_PARTICIPANT",
+		"promptScript": [
+			{
+				"class": "comicNode_Panel",
+				"panel": {
+					"bg": "comicBG_rocksNight.jpg",
+					"actorSlots": [
+						{ "role": "hook", "form": "frame-grim" }
+					],
+					"textSlots": [
+						{
+							"textSourceFile": "hook/hook_Dreamer_wintersWhispers_intro",
+							"textKey": "~04~prompt~panel_001~1_hook",
+							"style": "narration",
+							"pointerOwner": "hook"
+						}
+					]
+				}
+			}
+		],
+		"slots": {
+			"min": 2,
+			"max": 3,
+			"requiredRoles": [ "hook", "hook2" ]
+		},
+		"isJobResource": false
+	},
+	{
+		"role": "volunteer",
+		"template": "JOB_PARTICIPANT",
+		"choose": "ANY",
+		"slots": null,
+		"notAlreadyMatchedAs": [ "hook", "hook2" ],
+		"alreadyMatchedAs": [ "party" ],
+		"isJobResource": false
+	}
+],
+"outcomes": []
+}

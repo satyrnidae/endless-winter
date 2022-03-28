@@ -1,0 +1,30 @@
+[
+{
+	"modId": "saturniidae_hatchlingHarbinger",
+	"id": "saturniidae_hatchlingHarbinger_anUnexpectedFind_egg",
+	"STUB": "Used to indicate that the hero has a dragon egg.",
+	"importance": -1,
+	"lifespan": "all"
+},
+{
+	"modId": "saturniidae_hatchlingHarbinger",
+	"id": "saturniidae_hatchlingHarbinger_anUnexpectedFind_healerHero",
+	"STUB": "Used to show that a hero chose to try to save the egg.",
+	"importance": -1,
+	"lifespan": "all"
+},
+{
+	"modId": "saturniidae_hatchlingHarbinger",
+	"id": "saturniidae_hatchlingHarbinger_anUnexpectedFind_observer",
+	"STUB": "Used to indicate that a hero observed a dragon egg during the An Unexpected Find event.",
+	"importance": -1,
+	"lifespan": "all"
+},
+{
+	"modId": "saturniidae_hatchlingHarbinger",
+	"id": "saturniidae_hatchlingHarbinger_anUnexpectedFind_rivalHero",
+	"STUB": "Used to indicate that a hero destroyed a dragon egg during the An Unexpected Find event.",
+	"importance": -1,
+	"lifespan": "all"
+}
+]
